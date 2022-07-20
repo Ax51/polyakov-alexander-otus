@@ -1,0 +1,12 @@
+{
+  "name": "otus_node_tree",
+  "version": "1.0.1",
+  "description": "NodeJS script, that simply shows files and folders arrays of the given path",
+  "main": "tree.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tree": "node tree.js"
+  },
+  "author": "ax51",
+  "license": "ISC"
+}
