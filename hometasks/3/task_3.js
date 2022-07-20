@@ -14,6 +14,7 @@ function getPath(element) {
 
   const tags = getTags([], element)
   let selector = ''
+
   do {
     const el = tags.pop()
     selector += el.name + (el.number ? `:nth-child(${el.number + 1})` : '') + '>'
