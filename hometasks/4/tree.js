@@ -1,26 +1,27 @@
 const fs = require('fs/promises')
+const path = require('path')
 
-async function read(currDir) {
-  const files = []
-  const folders = []
-  for await (let i of currDir) {
-    if (i.isDirectory()) {
-      folders.push(`${currDir.path}/${i.name}`)
-    } else {
-      files.push(`${currDir.path}/${i.name}`)
-    }
-  }
-  return { files, folders }
+const files = []
+const folders = []
+async function read(input) {
+  return fs.realpath(input)
+    .then(fs.opendir)
+    .then(async currDir => {
+      for await (const i of currDir) {
+        const pathToItem = path.join(input, i.name)
+        if (i.isDirectory()) {
+          folders.push(pathToItem)
+          await read(pathToItem)
+        } else {
+          files.push(pathToItem)
+        }
+      }
+      return { files, folders }
+    })
 }
 
-module.exports = path =>
-  fs
-    .realpath(path)
-    .then(fs.opendir)
-    .then(read)
-    .then(res => {
-      console.log(res)
-      return res
-    })
-
-module.exports(process.argv[2])
+module.exports = (path =>
+  read(path).then(res => {
+    console.log(res)
+    return res
+  }))(process.argv[2])

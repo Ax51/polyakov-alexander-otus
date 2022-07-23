@@ -1,6 +1,6 @@
 {
   "name": "otus_node_tree",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "NodeJS script, that simply shows files and folders arrays of the given path",
   "main": "tree.js",
   "scripts": {
