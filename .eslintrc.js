@@ -1,7 +1,7 @@
 module.exports = {
   'env': {
-    'browser': true,
-    'es2021': true
+    'node': true,
+    'commonjs': true
   },
   'extends': 'eslint:recommended',
   'parserOptions': {
@@ -11,7 +11,8 @@ module.exports = {
   'rules': {
     'indent': [
       'error',
-      2
+      2,
+      { SwitchCase: 1 }
     ],
     'linebreak-style': [
       'error',
