@@ -1,6 +1,6 @@
-function getPath(element) {
+export default function getPath(element) {
   if (element?.id.length > 0) {
-    return '#' + element.id
+    return "#" + element.id
   }
 
   function getSiblings(el, count) {
@@ -13,14 +13,12 @@ function getPath(element) {
   }
 
   const tags = getTags([], element)
-  let selector = ''
+  let selector = ""
 
   do {
     const el = tags.pop()
-    selector += el.name + (el.number ? `:nth-child(${el.number + 1})` : '') + '>'
+    selector += el.name + (el.number ? `:nth-child(${el.number + 1})` : "") + ">"
   } while (tags.length)
 
   return selector.slice(0, -1)
 }
-
-getPath()
