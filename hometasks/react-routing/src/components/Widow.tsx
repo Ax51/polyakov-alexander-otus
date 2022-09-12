@@ -1,7 +1,7 @@
-import { ReactNode } from 'react'
+import { ReactNode, FC } from 'react'
 import { Grid } from '@mui/material'
 
-export function Window({ children }: { children: ReactNode }) {
+export const Window: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <Grid
       container

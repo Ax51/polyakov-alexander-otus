@@ -1,10 +1,10 @@
-import { useMemo } from 'react'
+import { useMemo, FC } from 'react'
 import { Grid, Typography } from '@mui/material'
 import { getDayName, getWeatherType } from '../../utils'
 import { Forecast } from '../../types'
 import './styles.css'
 
-export function DailyForecastRender({ forecast }: { forecast: Forecast }) {
+export const DailyForecastRender: FC<{ forecast: Forecast }> = ({ forecast }) => {
   const {
     temp,
     pop: rainChance,

@@ -2,9 +2,9 @@ import { useState, useEffect, useCallback } from 'react'
 import axios from 'axios'
 import { FetchForecast } from '../types'
 
-export function useForecast(city: string | undefined) {
+export function useForecast(city?: string) {
   const [forecast, setForecast] = useState<null | FetchForecast>(null)
-  const [isFetching, setIsFetching] = useState<boolean>(true)
+  const [isFetching, setIsFetching] = useState(true)
   const [error, setError] = useState<null | Error>(null)
 
   function resetState() {
@@ -27,17 +27,10 @@ export function useForecast(city: string | undefined) {
         }
       })
       .catch(err => {
-        console.error('error while fetching forecast:', err)
         setError(new Error('Error while fetching weather forecast'))
       })
       .finally(() => setIsFetching(false))
   }, [city])
-
-  useEffect(() => {
-    if (error) {
-      console.error(error.toString())
-    }
-  }, [error])
 
   useEffect(() => {
     resetState()
