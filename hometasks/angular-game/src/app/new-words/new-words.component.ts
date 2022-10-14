@@ -22,6 +22,7 @@ export class NewWordsComponent {
     }
   }
   removeWord(removeWord: string) {
-    this.changeWordsArr(this.wordsArr.filter(i => i[0] !== removeWord))
+    console.log('word to remove:', removeWord)
+    this.changeWordsArr(this.wordsArr.filter(i => i[0] !== removeWord.toLowerCase()))
   }
 }

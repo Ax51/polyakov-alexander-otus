@@ -2,6 +2,7 @@
   <h3>Excercises tab</h3>
   <hr />
   <div *ngIf="mode === 'choose'">
+    <h3 *ngIf="err">Error! no saved words!</h3>
     <div *ngIf="gameOver">
       <h3>GAME OVER</h3>
       <h4><b>The time is up!</b></h4>

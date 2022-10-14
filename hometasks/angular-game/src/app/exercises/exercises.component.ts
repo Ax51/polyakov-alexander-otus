@@ -16,6 +16,7 @@ export class ExercisesComponent implements OnDestroy {
   guessedWord = ''
   translationWord = ''
   timerId = 0
+  err = false
   getRandomWord() {
     const randomNumber = Math.ceil(Math.random() * (this.wordsArr.length - 1))
     const selectedWords = this.wordsArr[randomNumber]
@@ -23,18 +24,19 @@ export class ExercisesComponent implements OnDestroy {
     this.guessedWord = selectedWords[1]
   }
   endGame() {
-    console.log('END GAME')
     this.mode = 'choose'
     this.translationWord = ''
     this.guessedWord = ''
     this.gameOver = true
-    console.log('current mode:', this.mode)
   }
   startGame() {
-    this.mode = 'wordsGame'
-    this.getRandomWord()
-    console.log(this.settings)
-    this.timerId = Number(setTimeout(this.endGame.bind(this), this.settings.execTime * 1000))
+    if (this.wordsArr.length) {
+      this.mode = 'wordsGame'
+      this.getRandomWord()
+      this.timerId = Number(setTimeout(this.endGame.bind(this), this.settings.execTime * 1000))
+    } else {
+      this.err = true
+    }
   }
   checkWord(word: HTMLInputElement) {
     if (word.value.toLowerCase() === this.translationWord) {
