@@ -1,0 +1,37 @@
+<div class="settings-page">
+  <h3>Settings tab</h3>
+  <hr />
+  <form
+    name="settings"
+    #settingsForm
+    (submit)="handleSubmit(settingsForm); $event.preventDefault()"
+  >
+    <h4>Choose languages</h4>
+    <label for="primaryLangSelect">Select your language: </label>
+    <select id="primaryLangSelect">
+      <option value="en">English</option>
+      <option value="ru">Русский</option>
+    </select>
+    <br />
+    <label for="secondaryLangSelect">Select foreign language: </label>
+    <select id="secondaryLangSelect">
+      <option value="ru">Русский</option>
+      <option value="en">English</option>
+    </select>
+    <hr />
+    <h4>Choose words per exercise</h4>
+    <label for="execCount">Choose how mane words should be in one game: </label>
+    <select name="execCount">
+      <option *ngFor="let num of maxWordsCountArr" [selected]="num === savedSettings.execCount">
+        {{ num }}
+      </option>
+    </select>
+    <hr />
+    <h4>Select time for excersises</h4>
+    <label for="execTime">Select exercises time: </label>
+    <input type="time" name="execTime" max="05:00" min="01:00" [value]="timeToRender" />
+    <br />
+    <hr />
+    <button>Save</button>
+  </form>
+</div>

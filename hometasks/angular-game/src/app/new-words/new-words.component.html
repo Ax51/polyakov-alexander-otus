@@ -1,0 +1,19 @@
+<div>
+  <h3>New words tab</h3>
+  <hr/> 
+  <div class="new-words-container">
+    <div class="input-field">
+      <span>{{ learningLang | titlecase }} word:</span>
+      <input type="text" id="" #word (keydown.enter)="addNewWord(word, translation)" />
+      <span>Translation:</span>
+      <input type="text" id="" #translation (keydown.enter)="addNewWord(word, translation)" />
+      <button (click)="addNewWord(word, translation)">Add new word</button>
+    </div>
+    <hr />
+    <ul>
+      <li *ngFor="let word of wordsArr">
+        <b>{{ word[0] | titlecase }} - {{ word[1] | titlecase }}</b><button class="del_btn" (click)="removeWord(word[0])">X</button>
+      </li>
+    </ul>
+  </div>
+</div>

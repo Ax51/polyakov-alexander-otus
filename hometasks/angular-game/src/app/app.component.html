@@ -1,0 +1,11 @@
+<h1>{{title}}</h1>
+<!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
+<nav>
+  <ul class="nav-list">
+    <li><a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">New Words</a></li>
+    <li><a routerLink="/exercises" routerLinkActive="active" ariaCurrentWhenActive="page">Exercises</a></li>
+    <li><a routerLink="/settings" routerLinkActive="active" ariaCurrentWhenActive="page">Settings</a></li>
+  </ul>
+</nav>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>

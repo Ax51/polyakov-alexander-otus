@@ -1,0 +1,33 @@
+<div>
+  <h3>Excercises tab</h3>
+  <hr />
+  <div *ngIf="mode === 'choose'">
+    <div *ngIf="gameOver">
+      <h3>GAME OVER</h3>
+      <h4><b>The time is up!</b></h4>
+      <p>
+        Your score is: <span class="correct">{{ correctScore }}</span> correct answers to
+        <span class="wrong">{{ incorrectScore }}</span> incorrect answers
+      </p>
+      <p>Want to play again?</p>
+    </div>
+    <button (click)="startGame()">Start Game</button>
+  </div>
+  <div class="game wordsGame" *ngIf="mode === 'wordsGame'">
+    <div class="score">
+      <p>
+        Correct: <span class="correct">{{ correctScore }}</span
+        >; Incorrect: <span class="wrong">{{ incorrectScore }}</span>
+      </p>
+    </div>
+    <p>
+      Translate: <b>{{ guessedWord }}</b>
+    </p>
+    <label for="guess">Write your translation here: </label>
+    <input type="text" name="guess" #guess (keydown.enter)="checkWord(guess)" autocomplete="off" />
+    <button (click)="checkWord(guess)">Check</button>
+  </div>
+  <div class="center_btn">
+    <button *ngIf="mode !== 'choose'" (click)="mode = 'choose'">Stop Game</button>
+  </div>
+</div>

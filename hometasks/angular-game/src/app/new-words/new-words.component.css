@@ -1,0 +1,10 @@
+.input-field{
+  display: inline-flex;
+  gap: 2rem;
+}
+.del_btn{
+  margin-left:1rem;
+}
+.new-words-container > ul > li {
+  margin: 0.5rem 0;
+}
